@@ -1,5 +1,7 @@
 # parse-npm-tarball-url
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/pnpm/parse-npm-tarball-url.svg)](https://greenkeeper.io/)
+
 [![Build Status](https://travis-ci.org/pnpm/parse-npm-tarball-url.svg?branch=master)](https://travis-ci.org/pnpm/parse-npm-tarball-url)
 
 > Parse a tarball URL hosted in the npm registry
