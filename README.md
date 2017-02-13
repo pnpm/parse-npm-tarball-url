@@ -13,7 +13,7 @@ npm i -S parse-npm-tarball-url
 ## Usage
 
 ```js
-const parseNpmTarbalUrl = require('parse-npm-tarball-url')
+import parseNpmTarbalUrl from 'parse-npm-tarball-url'
 
 const spec = parseNpmTarbalUrl('http://registry.npmjs.org/foo/-/foo-1.0.0.tgz')
 
