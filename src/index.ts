@@ -5,30 +5,36 @@ import semverRegex = require('semver-regex')
 const parseUrl = url.parse
 
 export type ParsedPackageInfo = {
-  name: string | null,
-  version: string | null,
+  name: string,
+  version: string,
 }
 
 export default function (url: string): {
-  host: string | null,
-  pkg: ParsedPackageInfo | null,
-} {
+  host: string,
+  pkg: ParsedPackageInfo,
+} | null {
   assert(url, 'url is required')
   assert(typeof url === 'string', 'url should be a string')
 
   const urlObject = parseUrl(url)
   const pkg = urlObject.path && parsePath(urlObject.path)
+  if (!pkg || !urlObject.host) return null
   return {
-    host: urlObject.host || null,
-    pkg: pkg && (pkg.name || pkg.version) && pkg || null,
+    host: urlObject.host,
+    pkg,
   }
 }
 
-function parsePath (path: string): ParsedPackageInfo {
-  return {
-    name: getName(path),
-    version: getVersion(path),
-  }
+function parsePath (path: string): ParsedPackageInfo | null {
+  const name = getName(path)
+
+  if (!name) return null
+
+  const version = getVersion(path)
+
+  if (!version) return null
+
+  return { name, version }
 }
 
 function getName (path: string) {
