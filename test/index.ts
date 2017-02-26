@@ -18,7 +18,7 @@ test('parse simple URL', t => {
 })
 
 test('parse URL of scoped package', t => {
-  const result = parseNpmTarballUrl('http://registry.npmjs.org/@foo/bar/-/bar-1.0.0.tgz')
+  const result = parseNpmTarballUrl('http://registry.npmjs.org/@foo%2fbar/-/bar-1.0.0.tgz')
 
   if (!result) {
     t.ok(result)

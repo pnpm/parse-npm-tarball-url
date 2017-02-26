@@ -40,7 +40,7 @@ function parsePath (path: string): ParsedPackageInfo | null {
 function getName (path: string) {
   const parts = path.split('/-/')
   if (parts.length !== 2) return null
-  return parts[0] && parts[0].substr(1)
+  return parts[0] && decodeURIComponent(parts[0].substr(1))
 }
 
 function getVersion (path: string): string | null {
