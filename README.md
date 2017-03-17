@@ -27,6 +27,10 @@ console.log(spec)
 // }
 ```
 
+## Related
+
+- [get-npm-tarball-url](https://github.com/pnpm/get-npm-tarball-url) - Create the tarball URL of a npm package
+
 ## License
 
 [MIT](LICENSE) © [Zoltan Kochan](https://www.kochan.io)
