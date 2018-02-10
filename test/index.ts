@@ -1,5 +1,5 @@
 import test = require('tape')
-import parseNpmTarballUrl from '../src'
+import parseNpmTarballUrl from 'parse-npm-tarball-url'
 
 test('parse simple URL', t => {
   const result = parseNpmTarballUrl('http://registry.npmjs.org/foo/-/foo-1.0.0.tgz')

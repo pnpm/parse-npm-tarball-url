@@ -11,10 +11,10 @@
     "lib"
   ],
   "scripts": {
-    "test": "npm run lint && ts-node test --type-check",
+    "test": "npm run lint && preview && ts-node test --type-check",
     "lint": "tslint -c tslint.json --project .",
-    "tsc": "tsc",
-    "prepublish": "npm test && npm run tsc"
+    "tsc": "rimraf lib && tsc",
+    "prepublishOnly": "npm run tsc"
   },
   "repository": {
     "type": "git",
@@ -39,6 +39,8 @@
   "homepage": "https://github.com/pnpm/parse-npm-tarball-url#readme",
   "devDependencies": {
     "@types/tape": "^4.2.29",
+    "package-preview": "^1.0.5",
+    "rimraf": "^2.6.2",
     "tape": "^4.6.3",
     "ts-node": "^4.0.0",
     "tslint": "^5.0.0",
