@@ -47,7 +47,7 @@
     "typescript": "^2.1.6"
   },
   "dependencies": {
-    "@types/node": "^8.0.12",
+    "@types/node": "^9.4.4",
     "semver-regex": "^1.0.0"
   }
 }
