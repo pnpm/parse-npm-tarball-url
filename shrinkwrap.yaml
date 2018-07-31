@@ -1,6 +1,6 @@
 dependencies:
   '@types/node': 9.6.24
-  semver-regex: 1.0.0
+  semver-regex: 2.0.0
 devDependencies:
   '@types/tape': 4.2.32
   package-preview: 1.0.6
@@ -986,12 +986,12 @@ packages:
     dev: true
     resolution:
       integrity: sha512-Gd2UZBJDkXlY7GbJxfsE8/nvKkUEU1G38c1siN6QP6a9PT9MmHB8GnpscSmMJSoF8LOIrt8ud/wPtojys4G6+g==
-  /semver-regex/1.0.0:
+  /semver-regex/2.0.0:
     dev: false
     engines:
-      node: '>=0.10.0'
+      node: '>=6'
     resolution:
-      integrity: sha1-kqSWkGX5xwxpR1PVUkj8aPj2Usk=
+      integrity: sha512-mUdIBBvdn0PLOeP3TEkMH7HHeUP3GjsXCwKarjv/kGmUFOYg1VqEemKhoQpWMu6X2I8kHeuVdGibLGkVK+/5Qw==
   /semver/5.5.0:
     dev: true
     hasBin: true
@@ -1357,7 +1357,7 @@ specifiers:
   '@types/tape': ^4.2.29
   package-preview: ^1.0.5
   rimraf: ^2.6.2
-  semver-regex: ^1.0.0
+  semver-regex: ^2.0.0
   tape: ^4.6.3
   ts-node: ^7.0.0
   tslint: ^5.0.0
