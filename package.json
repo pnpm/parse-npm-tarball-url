@@ -39,7 +39,7 @@
   "homepage": "https://github.com/pnpm/parse-npm-tarball-url#readme",
   "devDependencies": {
     "@types/tape": "^4.2.29",
-    "package-preview": "^1.0.5",
+    "package-preview": "^2.0.0",
     "rimraf": "^2.6.2",
     "tape": "^4.6.3",
     "ts-node": "^7.0.0",
