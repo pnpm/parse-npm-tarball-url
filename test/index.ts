@@ -17,8 +17,24 @@ test('parse simple URL', t => {
   t.end()
 })
 
-test('parse URL of scoped package', t => {
+test('parse URL of encoded scoped package', t => {
   const result = parseNpmTarballUrl('http://registry.npmjs.org/@foo%2fbar/-/bar-1.0.0.tgz')
+
+  if (!result) {
+    t.ok(result)
+    return
+  }
+
+  t.equal(result.host, 'registry.npmjs.org')
+  t.ok(result.pkg)
+  t.equal(result.pkg.name, '@foo/bar')
+  t.equal(result.pkg.version, '1.0.0')
+
+  t.end()
+})
+
+test('parse URL of scoped package', t => {
+  const result = parseNpmTarballUrl('http://registry.npmjs.org/@foo/bar/-/bar-1.0.0.tgz')
 
   if (!result) {
     t.ok(result)
