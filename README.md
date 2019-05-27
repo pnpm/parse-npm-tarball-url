@@ -7,7 +7,7 @@
 ## Installation
 
 ```
-npm i -S parse-npm-tarball-url
+<pnpm|yarn|npm> add parse-npm-tarball-url
 ```
 
 ## Usage
