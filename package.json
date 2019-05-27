@@ -39,6 +39,7 @@
   "homepage": "https://github.com/pnpm/parse-npm-tarball-url#readme",
   "devDependencies": {
     "@types/node": "^12.0.2",
+    "@types/semver": "^6.0.0",
     "@types/tape": "^4.2.29",
     "package-preview": "^2.0.0",
     "rimraf": "^2.6.2",
@@ -48,6 +49,6 @@
     "typescript": "^3.0.0"
   },
   "dependencies": {
-    "semver-regex": "^2.0.0"
+    "semver": "^6.1.0"
   }
 }

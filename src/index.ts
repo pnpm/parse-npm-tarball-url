@@ -1,6 +1,6 @@
 import url = require('url')
 import assert = require('assert')
-import semverRegex = require('semver-regex')
+import semver = require('semver')
 
 const parseUrl = url.parse
 
@@ -9,7 +9,7 @@ export type ParsedPackageInfo = {
   version: string,
 }
 
-export default function (url: string): {
+export default function parseNpmTarballUrl (url: string): {
   host: string,
   pkg: ParsedPackageInfo,
 } | null {
@@ -26,25 +26,20 @@ export default function (url: string): {
 }
 
 function parsePath (path: string): ParsedPackageInfo | null {
-  const name = getName(path)
+  const parts = path.split('/-/')
+  if (parts.length !== 2) return null
+
+  const name = parts[0] && decodeURIComponent(parts[0].substr(1))
 
   if (!name) return null
 
-  const version = getVersion(path)
+  const pathWithNoExtension = parts[1].replace(/\.tgz$/, '')
 
-  if (!version) return null
+  const scopelessNameLength = name.length - (name.indexOf('/') + 1)
+
+  const version = pathWithNoExtension.substr(scopelessNameLength + 1)
+
+  if (!semver.valid(version, true)) return null
 
   return { name, version }
-}
-
-function getName (path: string) {
-  const parts = path.split('/-/')
-  if (parts.length !== 2) return null
-  return parts[0] && decodeURIComponent(parts[0].substr(1))
-}
-
-function getVersion (path: string): string | null {
-  const pathWithNoExtension = path.replace(/\.tgz$/, '')
-  const matches = pathWithNoExtension.match(semverRegex())
-  return matches && matches[matches.length - 1]
 }

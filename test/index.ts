@@ -81,10 +81,11 @@ test('parse URL of scoped package with prerelease version', t => {
   t.end()
 })
 
-test('return null if cannot parse', t => {
-  const result = parseNpmTarballUrl('http://registry.npmjs.org/index.html')
-
-  t.ok(result === null)
-
+test('return null on invalid URLs', t => {
+  t.equal(parseNpmTarballUrl('http://registry.npmjs.org/index.html'), null)
+  t.equal(parseNpmTarballUrl('http://registry.yarnpkg.com/foo/-/foo-qar.tgz'), null)
+  t.equal(parseNpmTarballUrl('http://registry.yarnpkg.com/foo/-/qar.tgz'), null)
+  t.equal(parseNpmTarballUrl('http://registry.yarnpkg.com/foo/-/foo.tgz'), null)
+  t.equal(parseNpmTarballUrl('http://registry.yarnpkg.com/foo/-/.tgz'), null)
   t.end()
 })
