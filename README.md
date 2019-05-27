@@ -15,15 +15,13 @@
 ```js
 import parseNpmTarbalUrl from 'parse-npm-tarball-url'
 
-const spec = parseNpmTarbalUrl('http://registry.npmjs.org/foo/-/foo-1.0.0.tgz')
+const pkg = parseNpmTarbalUrl('http://registry.npmjs.org/foo/-/foo-1.0.0.tgz')
 
-console.log(spec)
+console.log(pkg)
 // {
 //   host: 'registry.npmjs.org',
-//   pkg: {
-//    name: 'foo',
-//    version: '1.0.0'
-//   }
+//   name: 'foo',
+//   version: '1.0.0'
 // }
 ```
 

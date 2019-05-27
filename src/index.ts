@@ -1,31 +1,29 @@
-import url = require('url')
+import { parse as parseUrl } from 'url'
 import assert = require('assert')
-import semver = require('semver')
-
-const parseUrl = url.parse
-
-export type ParsedPackageInfo = {
-  name: string,
-  version: string,
-}
+import { valid as validVersion } from 'semver'
 
 export default function parseNpmTarballUrl (url: string): {
   host: string,
-  pkg: ParsedPackageInfo,
+  name: string,
+  version: string,
 } | null {
   assert(url, 'url is required')
   assert(typeof url === 'string', 'url should be a string')
 
-  const urlObject = parseUrl(url)
-  const pkg = urlObject.path && parsePath(urlObject.path)
-  if (!pkg || !urlObject.host) return null
+  const { path, host } = parseUrl(url)
+  if (!path || !host) return null
+
+  const pkg = parsePath(path)
+
+  if (!pkg) return null
   return {
-    host: urlObject.host,
-    pkg,
+    host,
+    name: pkg.name,
+    version: pkg.version,
   }
 }
 
-function parsePath (path: string): ParsedPackageInfo | null {
+function parsePath (path: string) {
   const parts = path.split('/-/')
   if (parts.length !== 2) return null
 
@@ -39,7 +37,7 @@ function parsePath (path: string): ParsedPackageInfo | null {
 
   const version = pathWithNoExtension.substr(scopelessNameLength + 1)
 
-  if (!semver.valid(version, true)) return null
+  if (!validVersion(version, true)) return null
 
   return { name, version }
 }
