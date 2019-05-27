@@ -1,7 +1,7 @@
 dependencies:
-  '@types/node': 10.14.6
   semver-regex: 2.0.0
 devDependencies:
+  '@types/node': 12.0.2
   '@types/tape': 4.2.33
   package-preview: 2.0.0
   rimraf: 2.6.3
@@ -66,8 +66,13 @@ packages:
     resolution:
       integrity: sha512-cy3yebKhrHuOcrJGkfwNHhpTXQLgmXSv1BX+4p32j+VUQ6aP2eJ5cL7OvGcAQx75fCTFaAIIAKewvqL+iwSd4g==
   /@types/node/10.14.6:
+    dev: true
     resolution:
       integrity: sha512-Fvm24+u85lGmV4hT5G++aht2C5I4Z4dYlWZIh62FAfFO/TfzXtPpoLI6I7AuBWkIFqZCnhFOoTT7RjjaIL5Fjg==
+  /@types/node/12.0.2:
+    dev: true
+    resolution:
+      integrity: sha512-5tabW/i+9mhrfEOUcLDu2xBPsHJ+X5Orqy9FKpale3SjDA17j5AEpYq5vfy3oAeAHGcvANRCO3NV3d2D6q3NiA==
   /@types/tape/4.2.33:
     dependencies:
       '@types/node': 10.14.6
@@ -1295,7 +1300,7 @@ packages:
     resolution:
       integrity: sha1-5a2ryKz0CPY4X8dklWhMiOavaJo=
 specifiers:
-  '@types/node': ^10.12.11
+  '@types/node': ^12.0.2
   '@types/tape': ^4.2.29
   package-preview: ^2.0.0
   rimraf: ^2.6.2
