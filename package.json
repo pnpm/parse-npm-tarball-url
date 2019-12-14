@@ -49,6 +49,6 @@
     "typescript": "^3.0.0"
   },
   "dependencies": {
-    "semver": "^6.1.0"
+    "semver": "^7.0.0"
   }
 }
