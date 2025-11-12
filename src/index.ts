@@ -1,4 +1,4 @@
-import { parse as parseUrl } from 'url'
+import { URL } from 'url'
 import assert = require('assert')
 import { valid as validVersion } from 'semver'
 
@@ -10,7 +10,7 @@ export default function parseNpmTarballUrl (url: string): {
   assert(url, 'url is required')
   assert(typeof url === 'string', 'url should be a string')
 
-  const { path, host } = parseUrl(url)
+  const { pathname: path, host } = new URL(url)
   if (!path || !host) return null
 
   const pkg = parsePath(path)
@@ -35,7 +35,7 @@ function parsePath (path: string) {
 
   const scopelessNameLength = name.length - (name.indexOf('/') + 1)
 
-  const version = pathWithNoExtension.substr(scopelessNameLength + 1)
+  const version = pathWithNoExtension.slice(scopelessNameLength + 1)
 
   if (!validVersion(version, true)) return null
 
