@@ -1,12 +1,14 @@
-import { URL } from 'url'
-import assert = require('assert')
-import { valid as validVersion } from 'semver'
+import assert from 'node:assert'
 
-export default function parseNpmTarballUrl (url: string): {
-  host: string,
-  name: string,
-  version: string,
-} | null {
+import semver from 'semver'
+
+export type ParsedTarballUrl = {
+  host: string
+  name: string
+  version: string
+}
+
+export function parseNpmTarballUrl (url: string): ParsedTarballUrl | null {
   assert(url, 'url is required')
   assert(typeof url === 'string', 'url should be a string')
 
@@ -14,8 +16,8 @@ export default function parseNpmTarballUrl (url: string): {
   if (!path || !host) return null
 
   const pkg = parsePath(path)
-
   if (!pkg) return null
+
   return {
     host,
     name: pkg.name,
@@ -23,21 +25,18 @@ export default function parseNpmTarballUrl (url: string): {
   }
 }
 
-function parsePath (path: string) {
+function parsePath (path: string): { name: string, version: string } | null {
   const parts = path.split('/-/')
   if (parts.length !== 2) return null
 
-  const name = parts[0] && decodeURIComponent(parts[0].substr(1))
-
+  const name = parts[0] && decodeURIComponent(parts[0].slice(1))
   if (!name) return null
 
   const pathWithNoExtension = parts[1].replace(/\.tgz$/, '')
-
   const scopelessNameLength = name.length - (name.indexOf('/') + 1)
-
   const version = pathWithNoExtension.slice(scopelessNameLength + 1)
 
-  if (!validVersion(version, true)) return null
+  if (!semver.valid(version, true)) return null
 
   return { name, version }
 }
